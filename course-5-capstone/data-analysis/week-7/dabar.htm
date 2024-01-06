@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <script type="text/javascript" src="dabar.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable( dabar );
+
+        var options = {
+          title: 'Visualisation of the Largest Metorites Classes By Mass',
+          chartArea: {left:'10%',top:'10%', width: '75%', height: '45%'},
+          fontSize: 14,
+          annotations: {
+            textStyle: {
+                fontSize: 10
+            }
+          },
+          bar: {
+            groupWidth: "80%"
+          }
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+
+        /*
+        var chart = new google.visualization.BarChart(document.getElementById('barchart_div'));
+        chart.draw(data, options);
+
+        var chart = new google.visualization.Histogram(document.getElementById('histogram_div'));
+        chart.draw(data, options);
+        */
+      }
+    </script>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 20px;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 1600px; height: 800px;"></div>
+    <!--div class="grid-container">
+        <div id="piechart_div"></div>
+        <div id="barchart_div"></div>
+        <div id="histogram_div"></div>
+    </div>-->
+  </body>
+</html>
